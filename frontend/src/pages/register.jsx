@@ -4,7 +4,7 @@ import NavBar from './../components/navbar';
 import BackgroundImage from './../components/backgroundImage';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { register } from "../features/auth/authSlice";
+import { register, reset } from "../features/auth/authSlice";
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 
@@ -30,6 +30,8 @@ const Register = () => {
         //redirect if it is successful
         if (isSuccess || user) {
             navigate('/')
+            dispatch(reset())
+
         }
     }, [isError, isSuccess, user, navigate])
 
