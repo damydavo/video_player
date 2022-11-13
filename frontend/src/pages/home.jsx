@@ -8,8 +8,10 @@ import { AiOutlineInfoCircle } from "react-icons/ai"
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getGenres, fetchMovies } from './../features/movies/movieSlice';
-
+import { getGenres, fetchMovies, reset } from './../features/movies/movieSlice';
+import { toast } from 'react-toastify';
+import Spinner from './../components/assets/spinner';
+import Slider from './../components/slider';
 
 const Home = () => {
 
@@ -20,21 +22,34 @@ const Home = () => {
         return () => (window.onscroll = null)
     }
 
-    // const movies = useSelector((state) => state.netflix.movies);
-    const { genres, isLoading } = useSelector((state) => state.netflix);
+    const { movies, genresLoaded, isLoading, isError, isSuccess, message } = useSelector((state) => state.netflix);
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        return () => {
+            if (isSuccess) {
+                dispatch(reset())
+            }
+        }
+    }, [dispatch, isSuccess])
 
     useEffect(() => {
         dispatch(getGenres());
     }, []);
 
     useEffect(() => {
-        if (isLoading) {
-            dispatch(fetchMovies({ genres, type: "all" }));
+        if (isError) {
+            toast.error(message)
         }
-    }, [isLoading, dispatch]);
+        if (genresLoaded) {
+            dispatch(fetchMovies({ type: "all" }));
+        }
+    }, [genresLoaded]);
+
+    if (isLoading) return <Spinner />
+    console.log(movies)
 
     return (
         <Container>
@@ -55,6 +70,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+            <Slider movies={movies} />
         </Container>
 
     );
