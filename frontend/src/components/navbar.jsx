@@ -1,15 +1,18 @@
 import React from "react";
 import styled from 'styled-components'
 import logo from './assets/logo.png'
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+    const navigate = useNavigate()
+
     return (
         <Container className="flex a-center j-between">
             <div className="logo">
                 <img src={logo} alt="logo" />
             </div>
 
-            <button>Sign up</button>
+            <button onClick={() => navigate("/register")}>Sign up</button>
         </Container>
     );
 }

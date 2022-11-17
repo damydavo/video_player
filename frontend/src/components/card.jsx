@@ -9,7 +9,7 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { BiChevronDown } from "react-icons/bi"
 import { useState } from "react";
 
-const Card = ({ movieData, isLiked = false }) => {
+const Card = React.memo(({ movieData, isLiked = false }) => {
     const [isHovered, setIsHovered] = useState(false)
     const navigate = useNavigate()
     return (
@@ -52,7 +52,7 @@ const Card = ({ movieData, isLiked = false }) => {
             }
         </Container>
     );
-}
+})
 
 
 const Container = styled.div`

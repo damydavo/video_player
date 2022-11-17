@@ -49,7 +49,6 @@ const Home = () => {
     }, [genresLoaded]);
 
     if (isLoading) return <Spinner />
-    console.log(movies)
 
     return (
         <Container>
