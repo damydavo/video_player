@@ -43,7 +43,7 @@ const Header = ({ isScrolled }) => {
 
                 <div className="left flex a-center">
                     <div className="logo-img flex a-center j-center">
-                        <img src={logo} alt="logo-img" />
+                        <Link to='/'><img src={logo} alt="logo-img" /></Link> 
                     </div>
                     <ul className="links flex">
                         {menus.map((menu) => {

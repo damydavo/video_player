@@ -1,15 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Header from './../components/header';
+import Header from '../components/header';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { getGenres, fetchMovies } from './../features/movies/movieSlice';
-import Slider from './../components/slider';
-import NotAvailable from './../components/notAvailable';
+import { getGenres, fetchMovies } from '../features/movies/movieSlice';
+import Slider from '../components/slider';
+import NotAvailable from '../components/notAvailable';
 import SelectGenre from "./selectGenre";
 
 
-const MoviePage = () => {
+const TvPage = () => {
 
     const [isScrolled, setScrolled] = useState(false)
 
@@ -23,7 +23,7 @@ const MoviePage = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (genresLoaded) dispatch(fetchMovies({ genres, type: "movie" }));
+        if (genresLoaded) dispatch(fetchMovies({ genres, type: "tv" }));
 
     }, [genresLoaded, dispatch]);
 
@@ -39,7 +39,7 @@ const MoviePage = () => {
 
             </div>
             <div className="data">
-                <SelectGenre genres={genres} type="movie" />
+                <SelectGenre genres={genres} type="tv" />
                 {
                     movies.length > 0 ? <Slider movies={movies} /> : <NotAvailable />
                 }
@@ -53,6 +53,7 @@ const MoviePage = () => {
 const Container = styled.div`
   .data {
     margin-top: 8rem;
+    z-index: 1;
     .not-available {
         text-align: center;
         color: #ffffff;
@@ -61,7 +62,6 @@ const Container = styled.div`
     select {
         margin-left: 40px;
         padding: 6px;
-        z-index: 99;
         cursor: pointer;
         font-size: 1.4rem;
         background-color: rgba(0,0,0,0.4);
@@ -70,4 +70,4 @@ const Container = styled.div`
   }
 
 `
-export default MoviePage;
+export default TvPage;

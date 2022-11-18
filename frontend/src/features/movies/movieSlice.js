@@ -32,6 +32,12 @@ export const fetchMovies = createAsyncThunk("netflix/trending", async ({ type },
 
 })
 
+export const fetchMoviesByGenres = createAsyncThunk("netflix/byGenres", async ({ genre, type }, thunkAPI) => {
+    const { netflix: { genres } } = thunkAPI.getState();
+    return await movieService.getRawData(`${TMDB_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}`, genres)
+})
+
+
 const movieSlice = createSlice({
     name: "Netflix",
     initialState,
@@ -58,6 +64,22 @@ const movieSlice = createSlice({
 
         });
         builder.addCase(fetchMovies.rejected, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = false
+            state.message = action.payload
+        });
+
+        builder.addCase(fetchMoviesByGenres.pending, (state, action) => {
+            state.isLoading = true;
+        })
+
+        builder.addCase(fetchMoviesByGenres.fulfilled, (state, action) => {
+            state.movies = action.payload;
+            state.isSuccess = true;
+            state.isLoading = false
+
+        });
+        builder.addCase(fetchMoviesByGenres.rejected, (state, action) => {
             state.isLoading = false
             state.isSuccess = false
             state.message = action.payload
