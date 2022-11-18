@@ -93,18 +93,31 @@ position:relative;
     width: 100vw;
     display: grid;
     grid-template-rows:15vh 85vh;
+
     .body {
         gap: 1rem;
         text-align: center;
         font-size: 2rem;
+        width: 100%;
+        .text {
+            display: none;
+        }
         h1{
             padding: 0 25rem;
         }
+        @media screen and (max-width: 768px) {
+            justify-content: center;
+            width: 180px;
+}
     }
     .form {
         display: grid;
         grid-template-columns: ${({ showPassword }) => showPassword ? '1fr 1fr' : '2fr 1fr'};
         width: 60%;
+        @media screen and (max-width: 768px) {
+            grid-template-columns: ${({ showPassword }) => showPassword ? '1fr' : '1fr'};
+        }
+      
         input {
             padding: 1.5rem;
             color: black;
@@ -123,6 +136,8 @@ position:relative;
             color: white;
             font-weight: bolder;
             font-size: 1.05rem;
+
+            
         }
     }
     button {
@@ -134,6 +149,13 @@ position:relative;
         border-radius: 0.2rem;
         font-weight: bolder;
         font-size: 1.05rem;
+    }
+
+    @media screen and (max-width: 768px) {
+            button {
+                padding: 24px;
+                justify-content: center;
+            }
     }
 }
   

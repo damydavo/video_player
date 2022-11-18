@@ -85,6 +85,11 @@ const Container = styled.div`
     }img {
         height: 100vh;
         width: 100vw;
+        @media screen and (max-width: 768px) {
+          width: 100vw;
+          height: 60vh;
+          object-fit: cover;
+          }
     }
     .container {
         position:absolute;
@@ -94,12 +99,20 @@ const Container = styled.div`
             width: 100%;
             height: 100%;
             margin-left: 5rem;
+            @media screen and (max-width: 768px) {
+                width: 50%;
+                height: 50%;
+                margin-left: 2rem;
+            }
            }
         }
 
         .buttons {
           margin: 5rem;
           gap: 2rem;
+          @media screen and (max-width: 768px) {
+            margin: 2rem;
+        }
         button {
             font-size: 1.4rem;
             gap: 1rem;
@@ -125,5 +138,6 @@ const Container = styled.div`
     }
      
   }
+
 `
 export default Home;

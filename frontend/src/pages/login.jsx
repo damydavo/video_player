@@ -96,6 +96,9 @@ position:relative;
             width: 25vw;
             gap: 2rem;
             color: #ffffff;
+            @media screen and (max-width: 768px) {
+                width: 80%;
+             }
             .container {
                 gap: 2rem;
             input {
