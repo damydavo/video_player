@@ -107,7 +107,7 @@ position:relative;
         }
         @media screen and (max-width: 768px) {
             justify-content: center;
-            width: 180px;
+            width: 200px;
 }
     }
     .form {

@@ -65,7 +65,7 @@ const Header = ({ isScrolled }) => {
                         <button onFocus={() => setShowSearch(true)} onBlur={() => {
                             if (!inputHover) setShowSearch(false)
                         }}>
-                            <FaSearch />
+                            <FaSearch className="icon-hide" />
                         </button>
 
                         <input type="text"
@@ -161,6 +161,11 @@ const Container = styled.div`
                 display: block;
             }
         }
+        @media screen and (max-width: 768px) {
+            .icon-hide {
+                display: none;
+            }
+        }
         .menu-icon {
             display: none;
         }
@@ -169,6 +174,7 @@ const Container = styled.div`
                 display: block;
                     width: 30px;
                     height: 30px;
+                    margin-left: 30px;
                 
             }
         }
@@ -182,6 +188,10 @@ const Container = styled.div`
             svg {
                 color: #f34242;
                 font-size: 1.2rem;
+                @media screen and (max-width: 768px) {
+                    font-size: 1.8rem;
+
+                }
             }
         }
         .search {

@@ -64,7 +64,7 @@ const Home = () => {
                             <FaPlay /> Play
                         </button>
                         <button className="flex j-center a-center">
-                            <AiOutlineInfoCircle /> More Info
+                            <AiOutlineInfoCircle /> Info
                         </button>
                     </div>
                 </div>

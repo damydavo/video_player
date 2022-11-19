@@ -19,6 +19,9 @@ const NavBar = () => {
 
 const Container = styled.div`
  padding: 0 4rem;
+ @media screen and (max-width: 768px) {
+    padding: 0 1.5rem;
+}
  .logo {
     img {
         height: 5rem;
@@ -34,7 +37,6 @@ const Container = styled.div`
     cursor: pointer;
     color: white;
     border-radius: 0.2rem;
-
  }
 `
 

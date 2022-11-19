@@ -27,6 +27,11 @@ const Container = styled.div`
   .player {
     width: 100vw;
     height: 100vh;
+    @media screen and (max-width: 768px) {
+        width: 100vw;
+        height: 100vh; 
+
+    }
     .back {
         position: absolute;
         padding: 2rem;
@@ -40,6 +45,13 @@ const Container = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+
+        }
+        
     }
   }
 `
