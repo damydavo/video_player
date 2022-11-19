@@ -49,6 +49,15 @@ const Header = ({ isScrolled }) => {
                         <Link to='/'><img src={logo} alt="logo-img" /></Link> 
                     </div>
 
+                    <ul className="links flex">
+                        {menus.map((menu) => {
+                            return (
+                                <li key={menu.name}>
+                                    <Link className="text" to={menu.link}>{menu.name}</Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
 
                 </div>
                 <div className="right flex a-center">
