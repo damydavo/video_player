@@ -7,6 +7,8 @@ const { errorHandler } = require('./middlewares/errorMiddleWare')
 
 //Database connection
 connectDB()
+const __dirname = path.resolve();
+
 
 const app = express()
 app.use(express.json())
